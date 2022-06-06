@@ -1,0 +1,113 @@
+#  2019/12/31  Toshiyuki Arai
+#
+#  AESCipher class based on the following web-site
+# pip install pycryptodome
+
+# https://gist.githubusercontent.com/5S/4b9179e6b71fb9a74b9c30fca266d7d2/raw/abb5a21d742ee8e315b490429cbb5bcc11272ae9/crypt.py
+# See also https://pycryptodome.readthedocs.io/en/latest/src/util/util.html
+
+# -*- coding: utf-8 -*-
+import base64
+
+from hashlib import sha256
+from Crypto import Random
+from Crypto.Cipher import AES
+from Crypto.Util import Padding
+from Crypto.Hash import SHA256
+
+class AESCipher(object):
+
+    # The constructor
+    def __init__(self):
+        self.mode = AES.MODE_CBC
+        self.padding_alg= 'pkcs7'  #– Padding algorithm. It can be ‘pkcs7’ (default)
+        
+
+    # This method will encrypt raw data by key and iv.
+    # key may be any text string.
+    # iv should be a binary byte array, for example Random.get_random_bytes(AES.block_size)
+    def encrypt(self, raw, key, iv):
+        enc_key = sha256(key.encode()).digest()
+
+        cipher = AES.new(enc_key, self.mode, iv)
+        data = Padding.pad(raw.encode('utf-8'), AES.block_size, self.padding_alg)
+        encrypted  = cipher.encrypt(data)
+        # Return binary encrypted data
+        return encrypted
+
+    # This method will decrypt encrypted data  by key and iv.
+    # key may be any text string.
+    # iv should be a binary byte array, for example Random.get_random_bytes(AES.block_size)
+    def decrypt(self, encrypted, key, iv):
+        dec_key = sha256(key.encode()).digest()
+        cipher = AES.new(dec_key, self.mode, iv)
+        decrypted = cipher.decrypt(encrypted)
+        data = Padding.unpad(decrypted, AES.block_size, self.padding_alg)
+        # Return binary decrypted data.        
+        return data
+
+class AESFileCipher(AESCipher):
+
+    # The constructor
+    def __init__(self):
+        super().__init__()
+
+    # This method will encrypt raw data in a file by key and iv.
+    # key may be any text string.
+    # iv should be a binary byte array, for example Random.get_random_bytes(AES.block_size)
+    def encrypt(self, in_filename, out_filename, key, iv):
+        with open(in_filename, "rb", encoding="utf-8") as infile:
+          data = infile.read()
+        encrypted = super.encrypt(data, key, iv)
+
+        white open(out_filename, "wb", encoding="utf-8") as outfile
+           outfile.write(encrypted)
+           
+    # This method will decrypt encrypted data in a file by key and iv.
+    # key may be any text string.
+    # iv should be a binary byte array, for example Random.get_random_bytes(AES.block_size)
+    def decrypt(self, in_filename, out_filename, key, iv):
+        with open(in_filename, "rb", encoding="utf-8") as infile:
+          data = infile.read()
+        decrypted = super.decrypt(data, key, iv)
+
+        white open(out_filename, "wb", encoding="utf-8") as outfile
+           outfile.write(decrypted)
+
+
+
+if __name__ == '__main__':
+    try:
+        cipher = AESCipher()
+        key = '!C#$X%asZpo()/?'
+        
+        iv = Random.get_random_bytes(AES.block_size)
+        
+        text = 'Global warming is real. Welcome to TOKYO2020 in the hottest summer.'
+        
+        encrypted = cipher.encrypt(text, key, iv)
+        print("Encrypted:'{}'".format(encrypted))
+            
+        decrypted = cipher.decrypt(encrypted, key, iv)
+        print("Decrypted:'{}'".format(decrypted))
+        
+        utf8_decrypted = decrypted.decode('utf-8')
+        
+        print("UTF-8-OriginalText:'{}'".format(text))
+        print("UTF-8-Decrypted:   '{}'".format(utf8_decrypted))
+        
+        filecipher = AESFileCipher()
+        in_filename = "test.txt"
+        enc_filename = "enc_test.txt"
+        dec_filename = "dec_test.txt"
+        
+        filecipher.encrypt(in_filename, enc_filename, key, iv)
+        
+        filecipher.decrypt(enc_filename, dec_filename, key, iv)
+        
+        
+    except Exception as ex:
+       print("Exception: {}".format(ex))
+         
+
+

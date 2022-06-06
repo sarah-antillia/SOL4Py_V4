@@ -1,0 +1,69 @@
+Bicycles_Only
+Bumpy_Road
+Buses_Only
+Buses_Priority
+Centre_Line
+Closed_To_Pedestrians
+Crossroads
+Dangerous_Wind _Gusts
+Directions_Indicator
+Falling_Rocks
+Keep_Left
+Keep_Right
+Left_Lane_Ends
+Maximum_Height_in_Meters
+Maximum_Weight_in_Tons
+Maximum_Width_in_Meters
+Minimum_Speed_Limit_50km
+Motor_Vehicles_Only
+No_Bicycles
+No_Buses
+No_Entry
+No_Motor_Vehicles
+No_Motor_Vehicles_Except_Motorcycles_And_Mopeds
+No_Motorcycles_Or_Mopeds
+No_Nonmotorized_Vehicle
+No_Overtaking
+No_Parking
+No_Pedestrian_Crossing
+No_Right_Turn_Crossing
+No_Stopping
+No_Trucks
+No_Turns
+No_TwoPerson_Motorcycles
+No_TwoStage_Right_Turn_For_Mopeds
+No_Vehicles_Carrying_Dangerous_Goods
+OneWay
+OneWay_To_The_Left
+OneWay_To_The_Right
+Pedestrian_Crossing
+Pedestrians_Only
+RailroadCrossing
+Road_Closed_To_ Vehicles
+Road_Closed_To_All
+Road_Narrows
+Roadworks
+Rotary
+Roundabout
+Safety_Zone
+School_Crossing
+School_Zone
+Slippery_Surface
+Slow_Down
+Sound_Horn
+Speed_Limit_90km
+Steep_Ascent _10%
+Steep_Descent_10%
+Stop
+Stop_Line
+Straight_Ahead_Or_Left_Turn
+Straight_Ahead_Or_Right_Turn
+Succession_Of _More_Than_Two _Curves_To_The _Right
+Traffic_Lights _Ahead
+Traffic_Merges_ From_Left
+Turn_Left
+Turn_Left_Or_Right
+Turn_Right
+TwoStage_Right_Turn_For_Mopeds
+TwoWay_Traffic_ Ahead
+Wild_Animals _Crossing

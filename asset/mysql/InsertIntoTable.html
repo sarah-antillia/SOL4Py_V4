@@ -1,0 +1,160 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso8859-1">
+<style type="text/css">
+body { color: #000; background: #FFF;
+     margin-left:4; margin-right:4;
+    margin-top:4; 
+	font-family: arial,verdana,helvetica,tahoma,sans-serif;
+}
+a:link { color: #33F; background: #FFF }
+a:visited { color: #72F; background: #FFF }
+pre {
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+@media (max-width: 480px) {
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+</style>
+<title>
+ InsertIntoTable
+</title>
+</head>
+<body>
+<TABLE CELLSPACING="0" CELLPADDING="2" BORDER="0" WIDTH="100%">
+<TR>
+<TD COLSPAN="3" HEIGHT="20" VALIGN="MIDDLE" BGCOLOR="navy">
+<FONT size="5"
+COLOR="#ffffff" SIZE="-1">&nbsp;&nbsp;SOL4Py Sample: InsertIntoTable
+</FONT></TD>
+</TR></TABLE>
+<br>
+<h3 align="Left">
+<a href= "../../samples.html">
+SOL4Py Samples<br>
+</a>
+</h3>
+<img src="./InsertIntoTable.png">
+<br><br>
+<pre wrap>
+#******************************************************************************
+#
+#  Copyright (c) 2020 Antillia.com TOSHIYUKI ARAI. ALL RIGHTS RESERVED.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+#******************************************************************************
+
+
+# 2020/01/30
+# See also https://stackoverflow.com/questions/5241031/python-inserting-and-retrieving-binary-data-into-mysql
+
+# encoding: utf-8
+0
+# InsertIntoTable.py
+
+
+
+&quot;&quot;&quot;
+create table test.User (
+  id             bigint unsigned not null primary key auto_increment,
+  auth_token     varchar(40)    default NULL,          
+  email          varchar(255)   unique default NULL,
+  password       varchar(512)   default NULL,      #(AES IV) + (AES ENCRUPTED Password) 
+  validated      bool           default False,     
+  last_modified  datetime       default NOW()
+);
+
+&quot;&quot;&quot;
+
+
+import sys
+import os
+import configparser
+
+sys.path.append(&#039;../&#039;)
+
+from SOL4Py.ZMain  import *
+import base64
+
+from SOL4Py.mysql.ZMySQLDB  import *
+from SOL4Py.crypto.ZAESIVEmbeddedCipher import *
+from SOL4Py.generator.ZTokenGenerator import *
+from SOL4Py.generator.ZEmailAddressGenerator import *
+from SOL4Py.generator.ZPasswordGenerator import *
+
+       
+if main(__name__):
+  # user password database 
+  # foo password  test
+  
+  db =  ZMySQLDB(argv=sys.argv)
+  
+  try:
+   
+    for i in range (1000):
+        token_generator   = ZTokenGenerator()
+        email_generator   = ZEmailAddressGenerator()
+        password_generator= ZPasswordGenerator()
+
+        atoken   = token_generator.generate(20)
+        email    = email_generator.generate()
+        password = password_generator.generate()
+        
+        key  = email
+        cipher = ZAESIVEmbeddedCipher(ZCipher.AS_HEX) 
+        hex_iv_password = cipher.encrypt(password, key)
+                
+        print(&quot;Auth_token   {}&quot;.format(atoken))
+        print(&quot;Email        {}&quot;.format(email))
+        
+        print(&quot;Password     {}&quot;.format(password)) 
+        try:
+            insert = &quot;INSERT INTO test.User (auth_token, email, password) VALUES(%s, %s, %s)&quot;
+            values = (atoken, email, hex_iv_password)
+            
+            db.execute(insert, values)
+
+        except:
+            traceback.print_exc()
+            db.rollback()
+
+    db.commit()
+        
+  except Exception as ex:
+    traceback.print_exc()
+    db.rollback()
+      
+  finally:
+    db.connection.close()
+ 
+  </pre>
+<font color = "navy" >
+<hr noshade color="navy"><b>Last modified:27 Jan. 2020</b>
+</font>
+<br>
+<font color = "navy" >
+<b>
+</b>
+</font>
+</body>
+</html>

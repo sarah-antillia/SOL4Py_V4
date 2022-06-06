@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=iso8859-1">
+<style type="text/css">
+body { color: #000; background: #FFF;
+     margin-left:4; margin-right:4;
+    margin-top:4; 
+	font-family: arial,verdana,helvetica,tahoma,sans-serif;
+}
+a:link { color: #33F; background: #FFF }
+a:visited { color: #72F; background: #FFF }
+pre {
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+@media (max-width: 480px) {
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+}
+</style>
+<title>
+ CreateTable
+</title>
+</head>
+<body>
+<TABLE CELLSPACING="0" CELLPADDING="2" BORDER="0" WIDTH="100%">
+<TR>
+<TD COLSPAN="3" HEIGHT="20" VALIGN="MIDDLE" BGCOLOR="navy">
+<FONT size="5"
+COLOR="#ffffff" SIZE="-1">&nbsp;&nbsp;SOL4Py Sample: CreateTable
+</FONT></TD>
+</TR></TABLE>
+<br>
+<h3 align="Left">
+<a href= "../../samples.html">
+SOL4Py Samples<br>
+</a>
+</h3>
+<img src="./CreateTable.png">
+<br><br>
+<pre wrap>
+#******************************************************************************
+#
+#  Copyright (c) 2018-2019 Antillia.com TOSHIYUKI ARAI. ALL RIGHTS RESERVED.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+#******************************************************************************
+
+
+# encoding: utf-8
+
+# CreateTable.py
+
+# 2018/09/30
+
+import sys
+import os
+import configparser
+
+sys.path.append(&#039;../&#039;)
+
+from SOL4Py.ZMain  import *
+
+from SOL4Py.oracle.ZOracleDB  import *
+
+       
+if main(__name__):
+  # user passwd service server port    
+  try:
+    db = ZOracleDB(argv=sys.argv)
+
+    create_tbl = &quot;Create Table ZUser(&quot;\
+                 + &quot;ID Number(6) not NULL primary key,&quot;\
+                 + &quot;Name varchar2(255) not NULL,&quot;\
+                 + &quot;Sex  varchar2(10),&quot;\
+                 + &quot;Age  Number(4),&quot;\
+                 + &quot;Birthday Date,&quot;\
+                 + &quot;Email varchar2(255),&quot;\
+                 + &quot;Telephone varchar2(128),&quot;\
+                 + &quot;Address varchar2(255),&quot;\
+                 + &quot;Company varchar2(255))&quot;
+ 
+    db.execute(create_tbl)
+
+  except (cx_Oracle.DatabaseError) as ex:
+    print(&quot;Exception {}&quot;.format(ex))
+
+  </pre>
+<font color = "navy" >
+<hr noshade color="navy"><b>Last modified: 22 Mar. 2019</b>
+</font>
+<br>
+<font color = "navy" >
+<b>
+</b>
+</font>
+</body>
+</html>

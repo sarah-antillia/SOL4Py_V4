@@ -1,0 +1,8 @@
+python BufferedColoredBox.py
+python BufferedColoredRegularIcosahedron.py
+python BufferedGradientColoredCube.py
+python BufferedRegularIcosahedron.py
+python RectangleShader.py
+python MultiColoredTriangleShader.py
+python TriangleShader.py
+python VertexAndIndexBufferARB.py

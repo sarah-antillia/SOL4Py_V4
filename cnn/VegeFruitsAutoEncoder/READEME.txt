@@ -1,0 +1,8 @@
+Please run build_model.bat, on your Anaconad Prompt, which contains the following lines:
+
+python VegeFruitsDataSetAugmentor.py
+python VegeFruitsModel.py
+
+These python scripts create augmented dataset from mini_dataset and VegeFruistModel weight file.
+
+

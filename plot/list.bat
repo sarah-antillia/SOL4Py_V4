@@ -1,0 +1,12 @@
+python FashionMNISTImageView.py
+python LinePlottingByTimerThread.py
+python MNISTImageView.py
+python MultiplePlottingArea.py
+python MultipleScrolledFigureViews.py
+python PlottingArea.py
+python Scrolled3DPlottingArea.py
+python ScrolledPlottingArea.py
+python SNSFlightHeatmap.py
+python SNSHeatmapFromCSV.py
+python SNSPairPlot.py
+python SNSSwarmPlot.py

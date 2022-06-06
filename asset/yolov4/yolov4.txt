@@ -1,0 +1,5 @@
+
+Download yolov4.weight from the following web-site:
+
+https://github-production-release-asset-2e65be.s3.amazonaws.com/75388965/ba4b
+

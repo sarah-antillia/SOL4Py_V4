@@ -1,0 +1,10 @@
+apple
+bell_pepper
+bitter_gourd
+carrot
+cucumber
+grape
+lemon
+orange
+strawberry
+zucchini
