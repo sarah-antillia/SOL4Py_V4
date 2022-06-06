@@ -1,4 +1,4 @@
-<h2>SOL4Py (Updated: 2022/06/07)</h2>
+<h2>SOL4Py-V4 (Updated: 2022/06/07)</h2>
 <font size=4>
 <b>
 1 What is SOL4Py <br>
@@ -8,16 +8,19 @@
 <b>1.1 SOL4Py</b>
 <br>
 SOL4Py is a tiny Python class library for Python, PyQt, OpenCV, and ML.<br> 
-The basic class design of SOL4Py is based on that of our SOL9 C++ library.  
+The basic class design of SOL4Py is based on that of our <a href="http://www.antillia.com/sol9.2.0/library.html">SOL9 C++ library</a>.  
  In order to develop our library, we have used the latest Python3.8, Tensorflow 2.7.0, torch 1.10, PyQt5, and OpenCV-4.5 on Windows 10 Version 20H2.
 We have tested the sample programs on Windows 10 only, but you may run them on Linux environment too, provided you install required Python, 
 PyQt, OpenCV modules on Linux. <br>
 <br>
 <li>
-2022/06/07: We have created SOL4Py package, please download <a href="./SOL4Py-4.0.0-py3-none-any.whl/">SOL4Py-4.0.0-py3-none-any.whl</a>.
+2022/06/07: We have created <a href="./SOL4Py-4.0.0-py3-none-any.whl/">SOL4Py package(SOL4Py-4.0.0-py3-none-any.wh)</a>,
+please down load <a href="./SOL4Py-4_Installer.zip">SOL4Py-4_Installer.zip</a>
+
 </li>
 <br>
-We created a virtual environment <b>py38</b> to develop SOL4Py library.
+We created a virtual environment <b>py38</b> to 
+develop SOL4Py library.
 <br>
 <br>
 <table style="border: 1px solid red;">
