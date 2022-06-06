@@ -9,7 +9,7 @@
 <br>
 SOL4Py is a tiny Python class library for Python, PyQt, OpenCV, and ML.<br> 
 The basic class design of SOL4Py is based on that of our SOL9 C++ library.  
- In order to develop our library, we have used the latest Python3.8, Tensorflow 2.4.2, torch 1.10, PyQt5, and OpenCV-4.5 on Windows 10 Version 20H2.
+ In order to develop our library, we have used the latest Python3.8, Tensorflow 2.7.0, torch 1.10, PyQt5, and OpenCV-4.5 on Windows 10 Version 20H2.
 We have tested the sample programs on Windows 10 only, but you may run them on Linux environment too, provided you install required Python, 
 PyQt, OpenCV modules on Linux. <br>
 <br>
@@ -24,7 +24,7 @@ We created a virtual environment <b>py38</b> to develop SOL4Py library.
 
 <tr><td>
 <font size=2>
-; 20220606 Modified to use python 3.8, tensorflow 2.4.2, and torch 1.10.1.<br>
+; 20220606 Modified to use python 3.8, tensorflow 2.7.0 and torch 1.10.1.<br>
 ; Create a virtual env py38<br>
 <pre>
 python -m venv c:\py38
