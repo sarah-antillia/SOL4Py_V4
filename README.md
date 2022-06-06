@@ -1,4 +1,4 @@
-<h2>SOL4Py-V4 (Updated: 2022/06/07)</h2>
+<h2>SOL4Py-V4 (Updated: 2022/06/08)</h2>
 <font size=4>
 <b>
 1 What is SOL4Py <br>
@@ -14,9 +14,8 @@ We have tested the sample programs on Windows 10 only, but you may run them on L
 PyQt, OpenCV modules on Linux. <br>
 <br>
 <li>
-2022/06/07: We have created <a href="./SOL4Py-4.0.0-py3-none-any.whl/">SOL4Py package(SOL4Py-4.0.0-py3-none-any.wh)</a>,
-please down load <a href="./SOL4Py-4_Installer.zip">SOL4Py-4_Installer.zip</a>
-
+2022/06/08: We have created <a href="./SOL4Py-4.0.0-py3-none-any.whl/">a SOL4Py package(SOL4Py-4.0.0-py3-none-any.wh)</a>,
+please down load <a href="./SOL4Py-4_Installer.zip">SOL4Py-4_Installer.zip</a> to install the package.
 </li>
 <br>
 We created a virtual environment <b>py38</b> to 
