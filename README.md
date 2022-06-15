@@ -1,4 +1,4 @@
-<h2>SOL4Py-V4 (Updated: 2022/06/08)</h2>
+<h2>SOL4Py-V4 (Updated: 2022/06/15)</h2>
 <font size=4>
 <b>
 1 What is SOL4Py <br>
@@ -26,7 +26,7 @@ develop SOL4Py library.
 
 <tr><td>
 <font size=2>
-; 20220606 Modified to use python 3.8, tensorflow 2.7.0 and torch 1.10.1.<br>
+; 20220615 Modified to use python 3.8, tensorflow 2.8.0 and torch 1.10.1.<br>
 ; Create a virtual env py38<br>
 <pre>
 python -m venv c:\py38
